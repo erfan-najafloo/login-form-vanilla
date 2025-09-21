@@ -18,7 +18,8 @@ form{
    font-weight: bold;
 
 }
-.info-input{
+.email-input,
+.password-input{
     border-width: 1px;
     border-radius: 5px;
     border-color: rgb(201, 201, 201);
