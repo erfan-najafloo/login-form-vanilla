@@ -14,6 +14,15 @@ loginButton.addEventListener(
                     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
                 );
         };
+        function validatePassword(pw) {
+
+    return /[A-Z]/       .test(pw) &&
+           /[a-z]/       .test(pw) &&
+           /[0-9]/       .test(pw) &&
+           /[^A-Za-z0-9]/.test(pw) &&
+           pw.length > 4;
+
+}
         event.preventDefault();
         errorOutputMessage.textContent = ''
         successOutPutMessage.textContent = ''
@@ -24,9 +33,13 @@ loginButton.addEventListener(
             errorOutputMessage.textContent = 'Please enter your Email'
         } else if (passwordInput.value === '') {
             errorOutputMessage.textContent = 'Please enter your password'
-        } else if (!validateEmail(emailInput.value)){ errorOutputMessage.textContent = "Please enter a valid email address" }
-            else{
-                successOutPutMessage.textContent='success login'
+        }
+            else if(!validateEmail(emailInput.value)){
+                errorOutputMessage.textContent = "Please enter a valid email address"
+            }else if(!validatePassword(passwordInput.value)){
+                errorOutputMessage.textContent = "Please enter a valid password"
+            }else{
+                successOutPutMessage.textContent='Success Login'
             }
         }
 
