@@ -3,7 +3,10 @@ const passwordInput = document.querySelector('.password-input');
 const loginButton = document.querySelector('.login-button');
 const outputMessage = document.querySelector('.output-message');
 loginButton.addEventListener(
-    'click', () => {
+    
+
+    'click', (event) => {
+        event.preventDefault();
         if (emailInput.value === '' && passwordInput.value === '') {
             outputMessage.textContent = 'Email and password are required'
         }
